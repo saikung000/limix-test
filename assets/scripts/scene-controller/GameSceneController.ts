@@ -1,10 +1,10 @@
 import { _decorator, Component, director, Node } from "cc";
 const { ccclass, property } = _decorator;
 
-@ccclass("Game2Scene")
-export class Game2Scene extends Component {
+@ccclass("GameSceneController")
+export class GameSceneController extends Component {
     start() {
-        console.log("Game2 Scene")
+        console.log("Open Game Scene")
     }
 
     update(deltaTime: number) {}
