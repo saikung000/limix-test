@@ -38,16 +38,21 @@ export class GameClickSpawnerController extends Component {
     public toothPastePrefab: Prefab;
 
     lastSpawnTime: number = 0;
+    timeRandomSpawn: number;
 
-    start() {}
+    start() {
+        this.timeRandomSpawn = this.getRandom(this.minSpawnTime, this.maxSpawnTime);
+        
+    }
 
     update(deltaTime: number) {
         const now = Date.now();
         const elapsedTime = now - this.lastSpawnTime;
         if (
-            elapsedTime >= this.getRandom(this.minSpawnTime, this.maxSpawnTime)
+            elapsedTime >=  this.timeRandomSpawn
         ) {
             this.createObject(this.getRandomBathroomToolType());
+            this.timeRandomSpawn = this.getRandom(this.minSpawnTime, this.maxSpawnTime);
             this.lastSpawnTime = now;
         }
     }
