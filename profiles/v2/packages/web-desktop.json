@@ -4,5 +4,15 @@
       "asyncFunctions": true
     },
     "startScene": "52cec91c-e5bc-4788-8133-38a77c2478ae"
+  },
+  "options": {
+    "web-desktop": {
+      "useWebGPU": false,
+      "resolution": {
+        "designWidth": 1280,
+        "designHeight": 960
+      },
+      "__version__": "1.0.1"
+    }
   }
 }

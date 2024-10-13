@@ -7,5 +7,72 @@
       "asyncFunctions": true
     },
     "startScene": "52cec91c-e5bc-4788-8133-38a77c2478ae"
+  },
+  "BuildTaskManager": {
+    "taskMap": {
+      "1728849699467": {
+        "type": "build",
+        "id": "1728849699467",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "10-14-2024 03:03:00 Build success in 80489 ms!",
+        "options": {
+          "name": "Test-Limix",
+          "platform": "web-desktop",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": true
+          },
+          "experimentalEraseModules": false,
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "replaceSplashScreen": false,
+          "startScene": "52cec91c-e5bc-4788-8133-38a77c2478ae",
+          "outputName": "web-desktop",
+          "scenes": [
+            {
+              "url": "db://assets/scenes/GameClickCollect.scene",
+              "uuid": "894566f3-a89d-40ea-b64c-658d394e0da8",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/scenes/GameDropCollect.scene",
+              "uuid": "d1d2a76e-2951-488d-b8f2-30691d2b1fae",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/scenes/MainMenu.scene",
+              "uuid": "52cec91c-e5bc-4788-8133-38a77c2478ae",
+              "inBundle": false
+            }
+          ],
+          "web-desktop": [],
+          "packages": {
+            "web-desktop": {
+              "useWebGPU": false,
+              "resolution": {
+                "designWidth": 1280,
+                "designHeight": 960
+              },
+              "__version__": "1.0.1"
+            },
+            "cocos-service": {
+              "configID": "aecc45",
+              "services": [],
+              "__version__": "3.0.7"
+            }
+          },
+          "__version__": "1.3.3"
+        },
+        "time": "10-14-2024 03:01",
+        "dirty": false
+      }
+    }
   }
 }
