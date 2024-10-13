@@ -39,8 +39,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -264.614,
-      "y": 102.551,
+      "x": 157.386,
+      "y": -36.449,
       "z": 0
     },
     "_lrot": {
@@ -362,8 +362,13 @@
     "__prefab": {
       "__id__": 17
     },
-    "speedDrop": 2,
+    "speedDrop": -3,
+    "destroyPosition": 800,
     "type": 4,
+    "particlePrefab": {
+      "__uuid__": "4b79e1fc-ea7b-4df4-9c10-b63c523f398f",
+      "__expectedType__": "cc.Prefab"
+    },
     "_id": ""
   },
   {

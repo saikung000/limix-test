@@ -1,0 +1,12 @@
+{
+  "options": {
+    "web-desktop": {
+      "configID": "aecc45",
+      "services": []
+    }
+  },
+  "builder-options": {
+    "configID": "aecc45",
+    "services": []
+  }
+}

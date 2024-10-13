@@ -8,10 +8,10 @@ export class MainMenuUI extends Component {
     update(deltaTime: number) {}
 
     onButtonGame1Click() {
-        director.loadScene("Game1", function () {});
+        director.loadScene("GameClickCollect", function () {});
     }
 
     onButtonGame2Click() {
-        director.loadScene("Game2", function () {});
+        director.loadScene("GameDropCollect", function () {});
     }
 }

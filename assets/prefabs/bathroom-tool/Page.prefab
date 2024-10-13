@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "ClickObject",
+    "_name": "Page",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ClickObject",
+    "_name": "Page",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -29,15 +29,18 @@
     "_components": [
       {
         "__id__": 14
+      },
+      {
+        "__id__": 16
       }
     ],
     "_prefab": {
-      "__id__": 16
+      "__id__": 18
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
+      "x": -149.614,
+      "y": 105.551,
       "z": 0
     },
     "_lrot": {
@@ -64,7 +67,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Toothpaste",
+    "_name": "Object",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -159,7 +162,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "4ad4d467-5afe-4991-8c39-c3d88c33d422@f9941",
+      "__uuid__": "f9ec542d-7b6d-42f8-94e3-7c4f5e8b3ef8@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -346,6 +349,31 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "001zf8YrlG+6FbUvJXWV/J"
+  },
+  {
+    "__type__": "a97e9juiVdLVpCJc4Jf/OQs",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 17
+    },
+    "speedDrop": -3,
+    "destroyPosition": 800,
+    "type": 0,
+    "particlePrefab": {
+      "__uuid__": "4b79e1fc-ea7b-4df4-9c10-b63c523f398f",
+      "__expectedType__": "cc.Prefab"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "aaD+WQrNdBL67EO9PAsQAl"
   },
   {
     "__type__": "cc.PrefabInfo",

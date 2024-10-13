@@ -1,4 +1,4 @@
-import { _decorator, CCInteger, Component, director, Node } from "cc";
+import { _decorator, Animation, CCInteger, Component, director, Node } from "cc";
 import { BathroomToolType } from "./BathroomToolType";
 import { ProgressBarView } from "../bar/ProgressBarView";
 const { ccclass, property } = _decorator;
@@ -18,6 +18,11 @@ export class GameClickCollectController extends Component {
     public toothBrushBar: ProgressBarView;
     @property({ type: ProgressBarView })
     public toothPasteBar: ProgressBarView;
+
+    @property({type: Node})
+    public GameOverPanel: Node
+    @property({type : Animation})
+    public GameOverPanelAnimation: Animation
 
     public isGameOver: boolean = false;
 
@@ -41,6 +46,7 @@ export class GameClickCollectController extends Component {
     ];
 
     start() {
+        this.GameOverPanel.active = false
         this.spawnAbleType = [
             BathroomToolType.Page,
             BathroomToolType.RubberDuck,
@@ -91,9 +97,12 @@ export class GameClickCollectController extends Component {
         if (this.spawnAbleType.length == 0) {
             this.isGameOver = true;
             console.log("Game Over");
-            this.schedule(function () {
+            this.GameOverPanel.active = true;
+            this.GameOverPanelAnimation.play();
+
+            this.scheduleOnce(function () {
                 director.loadScene("MainMenu", function () { });
-            }, 5);
+            }, 3);
         }
     }
 

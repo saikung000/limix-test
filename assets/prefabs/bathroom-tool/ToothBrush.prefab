@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "ShowerGel",
+    "_name": "ToothBrush",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ShowerGel",
+    "_name": "ToothBrush",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -39,8 +39,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -264.614,
-      "y": 102.551,
+      "x": -86.614,
+      "y": -453.851,
       "z": 0
     },
     "_lrot": {
@@ -126,7 +126,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
+      "width": 60,
       "height": 60
     },
     "_anchorPoint": {
@@ -162,7 +162,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "7c83f30a-d9df-40e4-94f5-67d34da04dfc@f9941",
+      "__uuid__": "84b694ac-76d3-4b04-8fd6-0f14c35a93eb@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -362,8 +362,13 @@
     "__prefab": {
       "__id__": 17
     },
-    "speedDrop": 2,
-    "type": 2,
+    "speedDrop": -3,
+    "destroyPosition": 800,
+    "type": 3,
+    "particlePrefab": {
+      "__uuid__": "4b79e1fc-ea7b-4df4-9c10-b63c523f398f",
+      "__expectedType__": "cc.Prefab"
+    },
     "_id": ""
   },
   {

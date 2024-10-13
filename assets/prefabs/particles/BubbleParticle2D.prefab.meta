@@ -2,12 +2,12 @@
   "ver": "1.1.40",
   "importer": "prefab",
   "imported": true,
-  "uuid": "4fa5e161-a249-49d7-8d0f-8a366b5a3f3b",
+  "uuid": "4b79e1fc-ea7b-4df4-9c10-b63c523f398f",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "ClickObject"
+    "syncNodeName": "BubbleParticle2D"
   }
 }

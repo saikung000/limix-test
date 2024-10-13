@@ -1,45 +1,72 @@
-import { __private, _decorator, CCInteger, CCString, Component, Enum, Input, input, Node, Vec2, Vec3 } from 'cc';
-import { BathroomToolType } from './BathroomToolType';
-import { GameClickCollectController } from './GameClickCollectController';
+import {
+    __private,
+    _decorator,
+    CCInteger,
+    CCString,
+    Component,
+    Enum,
+    Input,
+    input,
+    instantiate,
+    Node,
+    Prefab,
+    tween,
+    Vec2,
+    Vec3,
+} from "cc";
+import { BathroomToolType } from "./BathroomToolType";
+import { GameClickCollectController } from "./GameClickCollectController";
 const { ccclass, property } = _decorator;
 
-@ccclass('ClickObjectView')
+@ccclass("ClickObjectView")
 export class ClickObjectView extends Component {
+    @property({ type: CCInteger })
+    public speedDrop: number;
 
+    @property({ type: CCInteger })
+    public destroyPosition: number = 200;
 
-    @property({type: CCInteger})
-    public speedDrop :number
+    @property({ type: Enum(BathroomToolType) })
+    public type: BathroomToolType = BathroomToolType.Page;
+    @property({type : Prefab})
+    public particlePrefab : Prefab
 
-    @property ({type:Enum(BathroomToolType)})
-    public type : BathroomToolType = BathroomToolType.Page
     gameClickCollectController: GameClickCollectController;
-    
+    clicked: boolean = false;
+
     start() {
         this.node.on(Input.EventType.MOUSE_UP, this.onClick, this);
     }
-    
-
 
     update(deltaTime: number) {
-        var x = this.node.position.x
-        var y = this.node.position.y
-        y -=  this.speedDrop;
-        this.node.setPosition(new Vec3(x,y)) 
+        var x = this.node.position.x;
+        var y = this.node.position.y;
+        y -= this.speedDrop;
+        this.node.setPosition(new Vec3(x, y));
 
-        if(y <= -800)
-            this.node.destroy()
+        if (y >= this.destroyPosition) this.node.destroy();
     }
 
     init(gameClickCollectController: GameClickCollectController) {
         this.gameClickCollectController = gameClickCollectController;
     }
-    
-    onClick()
-    {
 
-        this.gameClickCollectController.AddItem(this.type)
-        this.node.destroy()
+    onClick() {
+        if(this.clicked) return
+        this.speedDrop = 0
+        this.clicked = true;
+        let particle = instantiate(this.particlePrefab);
+        particle.setPosition(this.node.position)
+        particle.setParent(this.node.parent)
+        tween(this.node)
+            .to(0.3, {worldScale : new Vec3(1.3, 1.3, 1.3)}, 
+            {
+                easing: "circIn",
+                onComplete: () => {
+                    this.node.destroy();
+                },
+            })
+            .start();
+        this.gameClickCollectController.AddItem(this.type);
     }
 }
-
-
