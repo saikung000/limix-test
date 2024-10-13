@@ -47,8 +47,11 @@ export class GameDropSpawnerController extends Component {
     }
 
     update(deltaTime: number) {
+        
+        if(this.gameDropCollectController.isGameOver) return;
         const now = Date.now();
         const elapsedTime = now - this.lastSpawnTime;
+       
         if (
             elapsedTime >=  this.timeRandomSpawn
         ) {
@@ -102,6 +105,7 @@ export class GameDropSpawnerController extends Component {
 
     getRandomFruitType(): FruitType {
         const spawnAbleList = this.gameDropCollectController.spawnAbleType;
+       
         if (spawnAbleList.length == 0) return null;
         const randomIndex = Math.floor(Math.random() * spawnAbleList.length);
         return spawnAbleList[randomIndex];

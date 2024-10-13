@@ -1,4 +1,4 @@
-import { _decorator, Animation, CCInteger, Component, director, Node } from "cc";
+import { _decorator, Animation, CCInteger, Component, director, Node, PhysicsSystem2D } from "cc";
 import { ProgressBarView } from "../bar/ProgressBarView";
 import { FruitType } from "./FruitType";
 const { ccclass, property } = _decorator;
@@ -46,6 +46,7 @@ export class GameDropCollectController extends Component {
     ];
 
     start() {
+        PhysicsSystem2D.instance.enable = true;
         this.GameOverPanel.active = false
         this.spawnAbleType = [
             FruitType.Apple,

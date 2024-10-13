@@ -67,7 +67,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "default_radio_button_off",
+    "_name": "Mask",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1

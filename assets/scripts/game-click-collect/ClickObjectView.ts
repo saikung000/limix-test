@@ -21,7 +21,7 @@ const { ccclass, property } = _decorator;
 @ccclass("ClickObjectView")
 export class ClickObjectView extends Component {
     @property({ type: CCInteger })
-    public speedDrop: number;
+    public speedDrop: number = -3;
 
     @property({ type: CCInteger })
     public destroyPosition: number = 200;

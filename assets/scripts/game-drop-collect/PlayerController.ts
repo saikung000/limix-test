@@ -19,7 +19,7 @@ const { ccclass, property } = _decorator;
 @ccclass("PlayerController")
 export class PlayerController extends Component {
     @property({ type: CCInteger })
-    public speed: number;
+    public speed: number = 1000;
     private curPos: Vec3 = new Vec3();
     @property({ type: UITransform })
     public canvas: UITransform;
@@ -56,6 +56,8 @@ export class PlayerController extends Component {
     }
 
     update(deltaTime: number) {
+        this.adjustInput = this.canvas.width/game.canvas.width;
+        this.centerWidth = game.canvas.width / 2
         this.node.getPosition(this.curPos);
 
         let distance = this.target.x - this.curPos.x;
@@ -64,7 +66,6 @@ export class PlayerController extends Component {
 
         let moveX = this.curPos.x + direction * step;
 
-        // console.log(distance * direction  +":" +step)
         if (distance * direction <= step) {
             this.node.setPosition(
                 new Vec3(this.target.x, this.curPos.y, this.curPos.y)
