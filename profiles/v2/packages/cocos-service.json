@@ -3,6 +3,10 @@
     "web-desktop": {
       "configID": "aecc45",
       "services": []
+    },
+    "web-mobile": {
+      "configID": "aecc45",
+      "services": []
     }
   },
   "builder-options": {

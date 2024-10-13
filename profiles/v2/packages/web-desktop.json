@@ -3,14 +3,18 @@
     "polyfills": {
       "asyncFunctions": true
     },
-    "startScene": "52cec91c-e5bc-4788-8133-38a77c2478ae"
+    "startScene": "52cec91c-e5bc-4788-8133-38a77c2478ae",
+    "buildPath": "project://build",
+    "outputName": "web-desktop-001",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "web-desktop"
   },
   "options": {
     "web-desktop": {
       "useWebGPU": false,
       "resolution": {
-        "designWidth": 1280,
-        "designHeight": 960
+        "designWidth": 960,
+        "designHeight": 640
       },
       "__version__": "1.0.1"
     }
