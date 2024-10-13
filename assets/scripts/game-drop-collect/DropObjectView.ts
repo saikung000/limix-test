@@ -20,9 +20,7 @@ import { PlayerController } from "./PlayerController";
 const { ccclass, property } = _decorator;
 
 @ccclass("DropObjectView")
-export class DropObjectView extends Component
-{
-
+export class DropObjectView extends Component {
     @property({ type: CCInteger })
     public speedDrop: number = 1;
 
@@ -35,7 +33,13 @@ export class DropObjectView extends Component
     public particlePrefab: Prefab;
 
     gameDropCollectController: GameDropCollectController;
-    isCollect: any;
+    isCollect: boolean;
+
+    protected onLoad(): void {
+        this.node.on("Game Over", function () {
+            
+        });
+    }
 
     start() {
         let collider = this.getComponent(BoxCollider2D);
@@ -50,6 +54,7 @@ export class DropObjectView extends Component
         y -= this.speedDrop;
         this.node.setPosition(new Vec3(x, y));
         if (y <= this.destroyPosition) this.node.destroy();
+        if (this.gameDropCollectController.isGameOver && !this.isCollect) this.node.destroy();
     }
 
     init(gameDropCollectController: GameDropCollectController) {
@@ -57,7 +62,7 @@ export class DropObjectView extends Component
     }
 
     onCollect() {
-        if(this.isCollect) return
+        if (this.isCollect) return;
         this.isCollect = true;
         this.speedDrop = 0;
         let particle = instantiate(this.particlePrefab);
@@ -83,7 +88,7 @@ export class DropObjectView extends Component
         otherCollider: Collider2D,
         contact: IPhysics2DContact | null
     ) {
-        console.log('onBeginContact');
+        console.log("onBeginContact");
         var player = otherCollider.getComponent(PlayerController);
         if (player) {
             this.onCollect();

@@ -39,20 +39,29 @@ export class GameClickSpawnerController extends Component {
 
     lastSpawnTime: number = 0;
     timeRandomSpawn: number;
+    isStart: boolean = false;
 
-    start() {
-        this.timeRandomSpawn = this.getRandom(this.minSpawnTime, this.maxSpawnTime);
-        
+    start() {}
+
+    startSpawn() {
+        this.timeRandomSpawn = this.getRandom(
+            this.minSpawnTime,
+            this.maxSpawnTime
+        );
+        this.isStart = true;
     }
 
     update(deltaTime: number) {
+        if (this.gameClickCollectController.isGameOver || !this.isStart) return;
+
         const now = Date.now();
         const elapsedTime = now - this.lastSpawnTime;
-        if (
-            elapsedTime >=  this.timeRandomSpawn
-        ) {
+        if (elapsedTime >= this.timeRandomSpawn) {
             this.createObject(this.getRandomBathroomToolType());
-            this.timeRandomSpawn = this.getRandom(this.minSpawnTime, this.maxSpawnTime);
+            this.timeRandomSpawn = this.getRandom(
+                this.minSpawnTime,
+                this.maxSpawnTime
+            );
             this.lastSpawnTime = now;
         }
     }
@@ -78,6 +87,7 @@ export class GameClickSpawnerController extends Component {
                 node = instantiate(this.toothPastePrefab);
                 break;
         }
+        
         let clickObject = node.getComponent(
             "ClickObjectView"
         ) as ClickObjectView;

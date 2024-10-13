@@ -1,6 +1,7 @@
 import { _decorator, Animation, CCInteger, Component, director, Node } from "cc";
 import { BathroomToolType } from "./BathroomToolType";
 import { ProgressBarView } from "../bar/ProgressBarView";
+import { GameClickSpawnerController } from "./GameClickSpawnerController";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameClickCollectController")
@@ -25,6 +26,9 @@ export class GameClickCollectController extends Component {
     public GameOverPanelAnimation: Animation
 
     public isGameOver: boolean = false;
+
+    @property({type : GameClickSpawnerController})
+    public spawner : GameClickSpawnerController
 
     public itemCollectMap: Map<BathroomToolType, number> = new Map<
         BathroomToolType,
@@ -58,6 +62,7 @@ export class GameClickCollectController extends Component {
         for (let value of this.itemCollectMap.values()) {
             value = 0;
         }
+        this.spawner.startSpawn();
     }
 
     public AddItem(typeItem: BathroomToolType) {

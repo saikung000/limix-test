@@ -1,6 +1,16 @@
-import { _decorator, Animation, CCInteger, Component, director, Node, PhysicsSystem2D } from "cc";
+import {
+    _decorator,
+    Animation,
+    CCInteger,
+    Component,
+    director,
+    EPhysics2DDrawFlags,
+    Node,
+    PhysicsSystem2D,
+} from "cc";
 import { ProgressBarView } from "../bar/ProgressBarView";
 import { FruitType } from "./FruitType";
+import { GameDropSpawnerController } from "./GameDropSpawnerController";
 const { ccclass, property } = _decorator;
 
 @ccclass("GameDropCollectController")
@@ -19,17 +29,17 @@ export class GameDropCollectController extends Component {
     @property({ type: ProgressBarView })
     public strawberryBar: ProgressBarView;
 
-    @property({type: Node})
-    public GameOverPanel: Node
-    @property({type : Animation})
-    public GameOverPanelAnimation: Animation
+    @property({ type: Node })
+    public GameOverPanel: Node;
+    @property({ type: Animation })
+    public GameOverPanelAnimation: Animation;
+
+    @property({ type: GameDropSpawnerController })
+    public spawner : GameDropSpawnerController
 
     public isGameOver: boolean = false;
 
-    public itemCollectMap: Map<FruitType, number> = new Map<
-    FruitType,
-        number
-    >([
+    public itemCollectMap: Map<FruitType, number> = new Map<FruitType, number>([
         [FruitType.Apple, 0],
         [FruitType.Banana, 0],
         [FruitType.Grape, 0],
@@ -47,7 +57,8 @@ export class GameDropCollectController extends Component {
 
     start() {
         PhysicsSystem2D.instance.enable = true;
-        this.GameOverPanel.active = false
+       
+        this.GameOverPanel.active = false;
         this.spawnAbleType = [
             FruitType.Apple,
             FruitType.Banana,
@@ -59,29 +70,31 @@ export class GameDropCollectController extends Component {
         for (let value of this.itemCollectMap.values()) {
             value = 0;
         }
+
+        this.spawner.startSpawn();
     }
 
     public AddItem(typeItem: FruitType) {
         var value = this.itemCollectMap.get(typeItem);
         value++;
-        this.itemCollectMap.set(typeItem, value );
+        this.itemCollectMap.set(typeItem, value);
         console.log(typeItem + ":" + value);
 
         switch (typeItem) {
             case FruitType.Apple:
-                this.appleBar.UpdateBar(value,this.maxCollect)
+                this.appleBar.UpdateBar(value, this.maxCollect);
                 break;
             case FruitType.Banana:
-                this.bananaBar.UpdateBar(value,this.maxCollect)
+                this.bananaBar.UpdateBar(value, this.maxCollect);
                 break;
             case FruitType.Grape:
-                this.grapeBar.UpdateBar(value,this.maxCollect)
+                this.grapeBar.UpdateBar(value, this.maxCollect);
                 break;
             case FruitType.Orange:
-                this.orangeBar.UpdateBar(value,this.maxCollect)
+                this.orangeBar.UpdateBar(value, this.maxCollect);
                 break;
             case FruitType.Strawberry:
-                this.strawberryBar.UpdateBar(value,this.maxCollect)
+                this.strawberryBar.UpdateBar(value, this.maxCollect);
                 break;
         }
 
@@ -100,9 +113,8 @@ export class GameDropCollectController extends Component {
             console.log("Game Over");
             this.GameOverPanel.active = true;
             this.GameOverPanelAnimation.play();
-
             this.scheduleOnce(function () {
-                director.loadScene("MainMenu", function () { });
+                director.loadScene("MainMenu", function () {});
             }, 3);
         }
     }

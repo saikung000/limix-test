@@ -45,6 +45,7 @@ export class ClickObjectView extends Component {
         this.node.setPosition(new Vec3(x, y));
 
         if (y >= this.destroyPosition) this.node.destroy();
+        if (this.gameClickCollectController.isGameOver && !this.clicked) this.node.destroy();
     }
 
     init(gameClickCollectController: GameClickCollectController) {

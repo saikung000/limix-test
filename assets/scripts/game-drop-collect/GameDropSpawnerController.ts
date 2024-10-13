@@ -15,6 +15,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass("GameDropSpawnerController")
 export class GameDropSpawnerController extends Component {
+
     @property({ type: GameDropCollectController })
     public gameDropCollectController: GameDropCollectController;
 
@@ -40,15 +41,21 @@ export class GameDropSpawnerController extends Component {
 
     lastSpawnTime: number = 0;
     timeRandomSpawn: number;
+    isStart: boolean;
 
     start() {
-        this.timeRandomSpawn = this.getRandom(this.minSpawnTime, this.maxSpawnTime);
         
+        
+    }
+
+    startSpawn() {
+        this.timeRandomSpawn = this.getRandom(this.minSpawnTime, this.maxSpawnTime);
+        this.isStart = true;
     }
 
     update(deltaTime: number) {
         
-        if(this.gameDropCollectController.isGameOver) return;
+        if(this.gameDropCollectController.isGameOver || !this.isStart) return;
         const now = Date.now();
         const elapsedTime = now - this.lastSpawnTime;
        
@@ -82,6 +89,7 @@ export class GameDropSpawnerController extends Component {
                 node = instantiate(this.strawberryPrefab);
                 break;
         }
+        
         let dropObject = node.getComponent(
             "DropObjectView"
         ) as DropObjectView;
